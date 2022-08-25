@@ -1,0 +1,44 @@
+<div class="jumbotron">
+    <div class="container">
+    <h3>Task Tracker app</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-8">
+        <input  id="text-id" type="text" name="todoText" class="form-control" 
+        (keyup.enter)="onAddTodo(todoText.value)" #todoText
+        placeholder="Add task to do"/>
+    </div>
+    <div class="col-2">
+        <button id ="addbtn"  class="btn" (click)="onAddTodo(todoText.value)">Add</button>
+    </div>
+    <div class="col-2">
+    <button class="btn" id="clear-id" (click)="onClearTodos()">Clear</button>
+    </div>      
+</div>
+<!-- write logic to display below text if todoList is empty -->
+<p *ngIf="" class="empty-p">Todo tasks List is empty!!!</p>   
+    <!-- todo table should be displayed if todoList is not empty, 
+        write logic to structural directive *ngIf -->
+<table *ngIf="">
+    <caption>Todo Tasks</caption>
+    <tr>
+        <th id="id-th1"> Todo name</th>
+        <th id="id-th">Todo Status</th>
+        <th id="id-th"> Delete todo</th>
+    </tr>
+
+     <!-- todos should be displayed if todoList is not empty, 
+        write logic to immplement structural directive *ngFor -->
+    <tr *ngFor="">
+        <!-- write logic for ngClass to check isCompleted attribute of todo 
+            and display as strike is isCompleted (use strike class from css) otherwise as normal text-->
+        <td> <h5  [ngClass]="todo.isCompleted ? 'strike':''"></h5></td>
+        <!-- write logic to display button text of todo and implement the click events -->
+                <!-- Display button text based on isCompleted status
+            if isCompleted is false then button text has to be Done otherwise Undone -->
+        <td><button  (click)="onCompletingTodo()"></button> </td>
+        <td> <button (click)="onDeletingTodo()">Delete</button></td>
+    </tr>
+</table>
